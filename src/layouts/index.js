@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { Layout, Menu, Icon, Breadcrumb, Tabs, Dropdown } from 'antd';
 import Link from 'umi/link';
+import withRouter from 'umi/withRouter'
+//import Bread from './Breadcrumbs.js'
 
 const { Header, Content, Footer, Sider } = Layout;
 //const { SubMenu } = Menu;
@@ -8,7 +10,6 @@ const { Header, Content, Footer, Sider } = Layout;
 const { TabPane } = Tabs;
 // 引入子菜单组件
 const SubMenu = Menu.SubMenu;
-
 
 const menu = (
     <Menu>
@@ -20,7 +21,20 @@ const menu = (
         </Menu.Item>
     </Menu>)
 
-export default class BasicLayout extends Component {
+const routes = {
+    '/': '',
+    '/overall': '总览',
+    '/dashboard': '运行监控',
+    '/device/binding': '策略绑定',
+    '/device/list': '设备列表',
+    '/device/model': '设备模型',
+    '/strategy/data':'采集策略',
+    '/strategy/upload':'上传策略',
+    '/strategy/control':'控制策略'
+}
+
+@withRouter
+class BasicLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,17 +48,19 @@ export default class BasicLayout extends Component {
         console.log(collapsed);
         this.setState({ collapsed });
     };
+
     render() {
+        console.log(this.props.location.pathname)
         return (
             <Layout style={{ minHeight: '100vh' }}>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+                <Sider trigger={null} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                     <div className="logo"
                         style={{
                             height: '64px',
-                            background: 'rgba(0, 120, 64,)',
+                            background: 'rgba(193, 210, 240,0.1)',
                             margin: '0px',
                         }}>
-                        <h1 style={{ color: '#e8ecf0', 'padding-top': '20px', 'padding-bottom': '14px', 'text-align': 'center' }}>物联网平台</h1>
+                        <h1 style={{ color: '#e8ecf0', 'paddingTop': '20px', 'paddingBottom': '14px', 'textAlign': 'center' }}>物联网平台</h1>
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
@@ -63,14 +79,14 @@ export default class BasicLayout extends Component {
                             key="sub1"
                             title={
                                 <span>
-                                    <Icon type="user" />
+                                    <Icon type="setting" />
                                     <span>设备管理</span>
                                 </span>
                             }
                         >
                             <Menu.Item key="3"><Link to="/device/list">设备列表</Link></Menu.Item>
                             <Menu.Item key="4"><Link to="/device/model">设备模型</Link></Menu.Item>
-                            <Menu.Item key="5"><Link to="/device/binding">策略管理</Link></Menu.Item>
+                            <Menu.Item key="5"><Link to="/device/binding">策略绑定</Link></Menu.Item>
                         </SubMenu>
                         <SubMenu
                             key="sub2"
@@ -89,12 +105,13 @@ export default class BasicLayout extends Component {
                 </Sider>
                 <Layout>
                     <Header style={{ background: '#fff', textAlign: 'right', padding: 20 }}>
-                        <Tabs defaultActiveKey="2">
+                        <Tabs defaultActiveKey='4'>
                             <TabPane
                                 tab={
                                     <span>
-                                        <Dropdown 
-                                        overlay={menu}>
+                                        <Icon type="team" />
+                                        <Dropdown
+                                            overlay={menu}>
                                             <a>用户管理</a>
                                         </Dropdown>
                                     </span>
@@ -103,17 +120,19 @@ export default class BasicLayout extends Component {
                             />
                             <TabPane
                                 tab={
-                                    <span>
-                                        <Icon type="apple" />
-                                        联系我们
-                                </span>
+                                    <Link to="/strategy/data">
+                                        <span>
+                                            <Icon type="phone" />
+                                            联系我们
+                                     </span>
+                                    </Link>
                                 }
                                 key="2"
                             />
                             <TabPane
                                 tab={
                                     <span>
-                                        <Icon type="android" />
+                                        <Icon type="info-circle" />
                                         问题提交
                                 </span>
                                 }
@@ -123,8 +142,8 @@ export default class BasicLayout extends Component {
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
-                            <Breadcrumb.Item>首页</Breadcrumb.Item>
-                            <Breadcrumb.Item>总览</Breadcrumb.Item>
+                            <Breadcrumb.Item><Link to=""><Icon type="home" />首页</Link></Breadcrumb.Item>
+                            <Breadcrumb.Item><Link to={this.props.location.pathname}>{routes[this.props.location.pathname]}</Link></Breadcrumb.Item>
                         </Breadcrumb>
                         <div style={{ padding: 24, background: '#fff', minHeight: 640 }}>{this.props.children}</div>
                     </Content>
@@ -134,3 +153,4 @@ export default class BasicLayout extends Component {
         )
     }
 }
+export default BasicLayout
