@@ -50,10 +50,10 @@ class BasicLayout extends Component {
     };
 
     render() {
-        console.log(this.props.location.pathname)
+        console.log(this.props.children)
         return (
             <Layout style={{ minHeight: '100vh' }}>
-                <Sider trigger={null} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+                <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                     <div className="logo"
                         style={{
                             height: '64px',
