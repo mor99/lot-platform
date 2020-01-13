@@ -22,15 +22,15 @@ const menu = (
     </Menu>)
 
 const routes = {
-    '/': '',
+    '/': '总览',
     '/overall': '总览',
     '/dashboard': '运行监控',
     '/device/binding': '策略绑定',
     '/device/list': '设备列表',
     '/device/model': '设备模型',
-    '/strategy/data':'采集策略',
-    '/strategy/upload':'上传策略',
-    '/strategy/control':'控制策略'
+    '/strategy/data': '采集策略',
+    '/strategy/upload': '上传策略',
+    '/strategy/control': '控制策略'
 }
 
 @withRouter
@@ -53,7 +53,7 @@ class BasicLayout extends Component {
         console.log(this.props.children)
         return (
             <Layout style={{ minHeight: '100vh' }}>
-                <Sider  collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                     <div className="logo"
                         style={{
                             height: '64px',
@@ -105,7 +105,7 @@ class BasicLayout extends Component {
                 </Sider>
                 <Layout>
                     <Header style={{ background: '#fff', textAlign: 'right', padding: 20 }}>
-                        <Tabs defaultActiveKey='4'>
+                        <Tabs>
                             <TabPane
                                 tab={
                                     <span>
@@ -131,10 +131,12 @@ class BasicLayout extends Component {
                             />
                             <TabPane
                                 tab={
-                                    <span>
-                                        <Icon type="info-circle" />
-                                        问题提交
-                                </span>
+                                    <Link to="/strategy/data">
+                                        <span>
+                                            <Icon type="info-circle" />
+                                            问题提交
+                                    </span>
+                                    </Link>
                                 }
                                 key="3"
                             />
@@ -145,7 +147,7 @@ class BasicLayout extends Component {
                             <Breadcrumb.Item><Link to=""><Icon type="home" />首页</Link></Breadcrumb.Item>
                             <Breadcrumb.Item><Link to={this.props.location.pathname}>{routes[this.props.location.pathname]}</Link></Breadcrumb.Item>
                         </Breadcrumb>
-                        <div style={{ padding: 24, background: '#fff', minHeight: 640 }}>{this.props.children}</div>
+                        <div style={{ padding: 24, width: '100%', height: '100%' }}>{this.props.children}</div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>©2020 宁夏计算机软件与技术服务有限公司</Footer>
                 </Layout>

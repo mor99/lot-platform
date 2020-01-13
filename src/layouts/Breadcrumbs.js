@@ -1,16 +1,3 @@
-//面包屑
-/*   withBreadcrumbs(routes)(({ breadcrumbs }) => (
-        <div>
-          {breadcrumbs.map((breadcrumb, index) => (
-            <span key={breadcrumb.key}>
-              <NavLink to={breadcrumb.props.match.url}>
-                {breadcrumb}
-              </NavLink>
-              {(index < breadcrumbs.length - 1) && <i> / </i>}
-            </span>
-          ))}
-        </div>
-      )); */
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Breadcrumb, Icon} from 'antd';
