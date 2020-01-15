@@ -40,6 +40,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
         }
     },
 );
+
 export default class Overall extends Component {
     constructor(props) {
         super(props);
@@ -47,10 +48,11 @@ export default class Overall extends Component {
 
     }
     state = {
-        visible: false,
+        visible: false
     };
 
     showModal = () => {
+        
         this.setState({ visible: true });
     };
 

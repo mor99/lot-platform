@@ -112,7 +112,7 @@ class BasicLayout extends Component {
                                         <Icon type="team" />
                                         <Dropdown
                                             overlay={menu}>
-                                            <a>用户管理</a>
+                                            <a href='/'>用户管理</a>
                                         </Dropdown>
                                     </span>
                                 }
