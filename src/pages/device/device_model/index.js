@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { Button, Icon ,Form,Modal,Input} from 'antd'
-import {Link} from 'umi/link'
-import AddModel from './add_model'
+import Link from 'umi/link'
 
 const {TextArea} = Input
 
@@ -78,18 +77,20 @@ export default class DeviceModel extends Component {
 
     render() {
         return (
-            <div style={{ padding: 24, background: '#fff', width: '100%', height: '60%' }}>
+            <div style={{ padding: 24, background: '#fff', width: '100%', height: '250px' }}>
+                <Link to='/device/model/add'>
                 <Button type='dashed'
                         onClick={this.showModal}
                         style={{
-                        width: '50%',
-                        height: '100%',
+                        width: '30%',
+                        height: '80%',
                         backgroundColor: 'rgb(231,246,253)',
                         borderColor: '',
                         borderRadius: ''
                 }}>
                     <Icon type='plus' /><br/>点击新建模型
                 </Button>
+                </Link>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}

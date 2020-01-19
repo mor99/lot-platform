@@ -24,17 +24,15 @@ export default {
         routes: [
           { path: '/device/binding', component: 'device/device_binding' },
           { path: '/device/list', component: 'device/device_list' },
-          { path: '/device/model', 
-            component: 'device/device_model' ,
-            routes:[{
-                path: '/device/model/addmodel',component: 'device/device_model/add_model'
-          }]}
+          { path: '/device/model', component: 'device/device_model'},
+          { path:'/device/model/add',component:'device/device_model/add_model'},
+          { path: '/device/model/bound',component:'device/device_model/bound'}
         ]
       },
       {
         path: '/strategy',
         routes: [
-          { path: '/strategy/data', component: 'strategy/strategy_data' },
+          { path: '/strategy/data', component: 'strategy/strategy_data'},
           { path: '/strategy/upload', component: 'strategy/strategy_upload' },
           { path: '/strategy/control', component: 'strategy/strategy_control' }
         ]
