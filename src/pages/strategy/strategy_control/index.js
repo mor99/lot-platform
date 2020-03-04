@@ -118,28 +118,28 @@ export default class StrategyControl extends Component {
         const columns = [
             {
                 title: '策略编号',
-                dataIndex: 'age',
+                dataIndex: 'id',
 
             },
             {
                 title: '策略名称',
-                dataIndex: 'address',
+                dataIndex: 'name',
             },
             {
                 title: '策略描述',
-                dataIndex: 'age',
+                dataIndex: 'description',
             },
             {
                 title: '基于模型ID',
-                dataIndex: 'age',
+                dataIndex: 'modelid',
             },
             {
                 title: '创建时间',
-                dataIndex: 'age',
+                dataIndex: 'start',
             },
             {
                 title: '更新时间',
-                dataIndex: 'age'
+                dataIndex: 'update'
             }
         ];
 

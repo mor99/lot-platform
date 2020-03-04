@@ -96,7 +96,7 @@ export default class Overall extends Component {
             },
             {
                 title: '设备描述',
-                dataIndex: 'address',
+                dataIndex: 'description',
             },
             {
                 title: '创建时间',
