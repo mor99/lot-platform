@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Table, Button, Form, Modal, Input } from 'antd'
 
-const { TextArea } = Input
+const { TextArea,Search } = Input
 
 
 
@@ -24,12 +24,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         <Form.Item label="设备名称">
                             {getFieldDecorator('titie', {
                                 rules: [{ required: true, message: '请输入设备名称' }],
-                            })(<Input />)}
+                            })(<Input placeholder="由英文字母,数字,下划线组成"/>)}
                         </Form.Item>
                         <Form.Item label="通信密码">
                             {getFieldDecorator('description', {
                                 rules: [{ required: true, message: '请输入通信密码' }],
-                            })(<Input type="textarea" />)}
+                            })(<Input type="textarea" placeholder="密码必须大于6位"/>)}
                         </Form.Item>
                         <Form.Item label="设备描述">
                             {getFieldDecorator('descriptionS')(<TextArea rows={2} />)}
@@ -119,32 +119,6 @@ export default class Overall extends Component {
             },
         ];
 
-        const data = [
-            {
-                key: '1',
-                name: 'John Brown',
-                age: 32,
-                address: 'New York No. 1 Lake Park',
-            },
-            {
-                key: '2',
-                name: 'Jim Green',
-                age: 42,
-                address: 'London No. 1 Lake Park',
-            },
-            {
-                key: '3',
-                name: 'Joe Black',
-                age: 32,
-                address: 'Sidney No. 1 Lake Park',
-            },
-            {
-                key: '4',
-                name: 'Jim Red',
-                age: 32,
-                address: 'London No. 2 Lake Park',
-            },
-        ];
 
         function onChange(pagination, filters, sorter, extra) {
             console.log('params', pagination, filters, sorter, extra);
@@ -154,6 +128,7 @@ export default class Overall extends Component {
                 <Button type="primary" onClick={this.showModal}>
                     添加设备
                 </Button>
+                <Search placeholder="按设备名搜索" onSearch={value => console.log(value)} style={{ width: 200 ,float:'right'}} enterButton />
                 <div style={{padding:'24px 0px 0px 0px'}}>
                 <CollectionCreateForm
                     wrappedComponentRef={this.saveFormRef}

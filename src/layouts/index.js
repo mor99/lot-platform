@@ -14,10 +14,10 @@ const SubMenu = Menu.SubMenu;
 const menu = (
     <Menu>
         <Menu.Item>
-            <Link to="/strategy/data">个人中心</Link>
+            <Link to="/overall">个人中心</Link>
         </Menu.Item>
         <Menu.Item>
-            <Link to="/strategy/data">退出登录</Link>
+            <Link to="/overall">退出登录</Link>
         </Menu.Item>
     </Menu>)
 
@@ -112,7 +112,7 @@ class BasicLayout extends Component {
                                         <Icon type="team" />
                                         <Dropdown
                                             overlay={menu}>
-                                            <a href='/'>用户管理</a>
+                                            <a href='/overll'>用户管理</a>
                                         </Dropdown>
                                     </span>
                                 }
@@ -120,7 +120,7 @@ class BasicLayout extends Component {
                             />
                             <TabPane
                                 tab={
-                                    <Link to="/strategy/data">
+                                    <Link to="/overall">
                                         <span>
                                             <Icon type="phone" />
                                             联系我们
@@ -131,7 +131,7 @@ class BasicLayout extends Component {
                             />
                             <TabPane
                                 tab={
-                                    <Link to="/strategy/data">
+                                    <Link to="/overall">
                                         <span>
                                             <Icon type="info-circle" />
                                             问题提交
