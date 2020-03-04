@@ -1,9 +1,5 @@
 import { Component } from 'react';
-<<<<<<< HEAD
 import { Button, Icon, Form, Modal, Input, Table, Select } from 'antd'
-=======
-import { Button, Icon ,Form,Modal,Input} from 'antd'
->>>>>>> da3240d9d0585b347038709cf74e6c1b7b059310
 import Link from 'umi/link'
 
 const { Option } = Select
@@ -235,7 +231,6 @@ export default class DeviceModel extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
             <div style={{ padding: 24, background: '#fff', width: '100%', height: '60%' }}>
                 {!this.state.visible ? (<Button type='dashed'
                     onClick={this.showModal}
@@ -248,28 +243,6 @@ export default class DeviceModel extends Component {
                     }}>
                     <Icon type='plus' /><br />点击新建模型
                 </Button>) : (<AddModel />)}
-=======
-            <div style={{ padding: 24, background: '#fff', width: '100%', height: '250px' }}>
-                <Link to='/device/model/add'>
-                <Button type='dashed'
-                        onClick={this.showModal}
-                        style={{
-                        width: '30%',
-                        height: '80%',
-                        backgroundColor: 'rgb(231,246,253)',
-                        borderColor: '',
-                        borderRadius: ''
-                }}>
-                    <Icon type='plus' /><br/>点击新建模型
-                </Button>
-                </Link>
-                <CollectionCreateForm
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                    />
->>>>>>> da3240d9d0585b347038709cf74e6c1b7b059310
             </div>
         )
     }

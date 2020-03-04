@@ -124,10 +124,6 @@ export default class Overall extends Component {
             },
         ];
 
-<<<<<<< HEAD
-=======
-
->>>>>>> da3240d9d0585b347038709cf74e6c1b7b059310
 
         function onChange(pagination, filters, sorter, extra) {
             console.log('params', pagination, filters, sorter, extra);
