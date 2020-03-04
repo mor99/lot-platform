@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Table, Button, Form, Modal, Input } from 'antd'
+import axios from 'axios'
 
 const { TextArea,Search } = Input
 
@@ -44,7 +45,9 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 export default class Overall extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            data:[]
+        };
 
     }
     state = {
@@ -77,16 +80,18 @@ export default class Overall extends Component {
         this.formRef = formRef;
     };
     render() {
+        axios.get('/api/data')
+            .then((response)=>{this.setState({data:response.data})})
         const columns = [
             {
                 title: '设备编号',
-                dataIndex: 'name',
+                dataIndex: 'key',
                 defaultSortOrder: 'descend',
-                sorter: (a, b) => a.age - b.age,
+                sorter: (a, b) => b.key - a.key,
             },
             {
                 title: '设备名称',
-                dataIndex: 'age',
+                dataIndex: 'name',
 
             },
             {
@@ -95,30 +100,34 @@ export default class Overall extends Component {
             },
             {
                 title: '创建时间',
-                dataIndex: 'age',
+                dataIndex: 'starttime',
             },
             {
                 title: '更新时间',
-                dataIndex: 'age',
+                dataIndex: 'updatetime',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },
             {
                 title: '是否启用',
-                dataIndex: 'age',
+                dataIndex: 'isuse',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },
             {
                 title: '通信密码',
-                dataIndex: 'age',
+                dataIndex: 'msg',
             },
             {
                 title: '操作',
-                dataIndex: 'age',
+                dataIndex: 'action',
             },
         ];
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> da3240d9d0585b347038709cf74e6c1b7b059310
 
         function onChange(pagination, filters, sorter, extra) {
             console.log('params', pagination, filters, sorter, extra);
@@ -136,7 +145,7 @@ export default class Overall extends Component {
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
                 />
-                <Table columns={columns} dataSource={null} onChange={onChange} 
+                <Table columns={columns} dataSource={this.data} onChange={onChange} 
                 locale={{filterConfirm: '确定',
                         filterReset: '重置',
                         emptyText: '暂无数据'}} />
