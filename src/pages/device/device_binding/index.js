@@ -78,20 +78,20 @@ export default class Overall extends Component {
         const columns = [
             {
                 title: '设备名称',
-                dataIndex: 'age',
+                dataIndex: 'name',
 
             },
             {
                 title: '采集策略',
-                dataIndex: 'address',
+                dataIndex: 'collect',
             },
             {
                 title: '上传策略',
-                dataIndex: 'age',
+                dataIndex: 'upload',
             },
             {
                 title: '控制策略',
-                dataIndex: 'age',
+                dataIndex: 'control',
             },
         ];
 

@@ -18,20 +18,20 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                 },
                 {
                     title: '属性别名',
-                    dataIndex: 'age',
+                    dataIndex: 'alias',
     
                 },
                 {
                     title: '类型',
-                    dataIndex: 'address',
+                    dataIndex: 'type',
                 },
                 {
                     title: '单位',
-                    dataIndex: 'age',
+                    dataIndex: 'unit',
                 },
                 {
                     title: '是否控制',
-                    dataIndex: 'age',
+                    dataIndex: 'isControl',
                 }]
             return (
                 <Modal

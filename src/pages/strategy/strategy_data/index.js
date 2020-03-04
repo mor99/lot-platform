@@ -53,20 +53,20 @@ const options = [
                 },
                 {
                     title: '属性别名',
-                    dataIndex: 'age',
+                    dataIndex: 'alias',
     
                 },
                 {
                     title: '类型',
-                    dataIndex: 'address',
+                    dataIndex: 'type',
                 },
                 {
                     title: '单位',
-                    dataIndex: 'age',
+                    dataIndex: 'unit',
                 },
                 {
                     title: '是否控制',
-                    dataIndex: 'age',
+                    dataIndex: 'isControl',
                 }]
             return (
                 <Modal
@@ -197,71 +197,71 @@ export default class StrategyData extends Component{
         const deploycolumns = [
             {
                 title: '配置编号',
-                dataIndex: 'name',
+                dataIndex: 'id',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },
             {
                 title: '参数名称',
-                dataIndex: 'age',
+                dataIndex: 'name',
 
             },
             {
                 title: '配置描述',
-                dataIndex: 'address',
+                dataIndex: 'describe',
             },
             {
                 title: '外设类型',
-                dataIndex: 'age',
+                dataIndex: 'type',
             },
             {
                 title: '使用协议',
-                dataIndex: 'age',
+                dataIndex: 'deal',
                 defaultSortOrder: 'descend',
             },
             {
                 title: '创建时间',
-                dataIndex: 'age',
+                dataIndex: 'start',
                 defaultSortOrder: 'descend',
             },
             {
                 title: '更新时间',
-                dataIndex: 'age',
+                dataIndex: 'update',
             },
             {
                 title: '是否启用',
-                dataIndex: 'age',
+                dataIndex: 'isUsing',
             },
         ];
         const contentcolumns = [
             {
                 title: '内容编号',
-                dataIndex: 'name',
+                dataIndex: 'id',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },
             {
                 title: '内容名称',
-                dataIndex: 'age',
+                dataIndex: 'name',
 
             },
             {
                 title: '内容描述',
-                dataIndex: 'address',
+                dataIndex: 'description',
             },
             {
                 title: '基于模型ID',
-                dataIndex: 'age',
+                dataIndex: 'modelId',
             },
             {
                 title: '创建时间',
-                dataIndex: 'age',
+                dataIndex: 'start',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },
             {
                 title: '更新时间',
-                dataIndex: 'age',
+                dataIndex: 'update',
                 defaultSortOrder: 'descend',
                 sorter: (a, b) => a.age - b.age,
             },

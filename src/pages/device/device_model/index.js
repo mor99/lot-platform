@@ -58,20 +58,20 @@ class AddModel extends Component {
             },
             {
                 title: '属性别名',
-                dataIndex: 'age',
+                dataIndex: 'alias',
 
             },
             {
                 title: '类型',
-                dataIndex: 'address',
+                dataIndex: 'type',
             },
             {
                 title: '单位',
-                dataIndex: 'age',
+                dataIndex: 'unit',
             },
             {
                 title: '操作',
-                dataIndex: 'age',
+                dataIndex: 'action',
                 defaultSortOrder: 'descend',
             },
         ];
