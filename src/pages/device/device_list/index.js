@@ -1,52 +1,19 @@
+
 import { Component } from 'react';
-import { Table, Button, Form, Modal, Input } from 'antd'
-import axios from 'axios'
+import { Button,  Input } from 'antd'
 
-const { TextArea,Search } = Input
+//import { Collection } from '../../../libs/components/create_form/collection.js'
+import CreateTable from '../../../libs/components/create_table/index.js'
+import styles from './index.less'
+import {CollectionAddDevice} from './adddevice.js'
 
-
-
-const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
-    // eslint-disable-next-line
-    class extends React.Component {
-        render() {
-            const { visible, onCancel, onCreate, form } = this.props;
-            const { getFieldDecorator } = form;
-            return (
-                <Modal
-                    visible={visible}
-                    title="添加设备"
-                    cancelText='取消'
-                    okText="添加"
-                    onCancel={onCancel}
-                    onOk={onCreate}
-                >
-                    <Form layout="vertical">
-                        <Form.Item label="设备名称">
-                            {getFieldDecorator('titie', {
-                                rules: [{ required: true, message: '请输入设备名称' }],
-                            })(<Input placeholder="由英文字母,数字,下划线组成"/>)}
-                        </Form.Item>
-                        <Form.Item label="通信密码">
-                            {getFieldDecorator('description', {
-                                rules: [{ required: true, message: '请输入通信密码' }],
-                            })(<Input type="textarea" placeholder="密码必须大于6位"/>)}
-                        </Form.Item>
-                        <Form.Item label="设备描述">
-                            {getFieldDecorator('descriptionS')(<TextArea rows={2} />)}
-                        </Form.Item>
-                    </Form>
-                </Modal>
-            );
-        }
-    },
-);
+const { TextArea, Search } = Input
 
 export default class Overall extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:[]
+            data: []
         };
 
     }
@@ -55,7 +22,7 @@ export default class Overall extends Component {
     };
 
     showModal = () => {
-        
+
         this.setState({ visible: true });
     };
 
@@ -80,8 +47,6 @@ export default class Overall extends Component {
         this.formRef = formRef;
     };
     render() {
-        axios.get('/api/data')
-            .then((response)=>{this.setState({data:response.data})})
         const columns = [
             {
                 title: '设备编号',
@@ -124,27 +89,27 @@ export default class Overall extends Component {
             },
         ];
 
-
-        function onChange(pagination, filters, sorter, extra) {
-            console.log('params', pagination, filters, sorter, extra);
-        }
         return (
-            <div style={{ padding: 24,background: '#fff', width:'100%',height:'100%' }}>
+            <div className={styles.devicelist}>
                 <Button type="primary" onClick={this.showModal}>
                     添加设备
                 </Button>
-                <Search placeholder="按设备名搜索" onSearch={value => console.log(value)} style={{ width: 200 ,float:'right'}} enterButton />
-                <div style={{padding:'24px 0px 0px 0px'}}>
-                <CollectionCreateForm
+                <Search placeholder="按设备名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
+                <div style={{ padding: '24px 0px 0px 0px' }}>
+                 <CollectionAddDevice
                     wrappedComponentRef={this.saveFormRef}
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
-                />
-                <Table columns={columns} dataSource={this.data} onChange={onChange} 
-                locale={{filterConfirm: '确定',
-                        filterReset: '重置',
-                        emptyText: '暂无数据'}} />
+                /> 
+{/*                     <Collection 
+                        visible={this.state.visible} 
+                        content={content}
+                        wrappedComponentRef={this.saveFormRef}
+                        onCancel={this.handleCancel}
+                        onCreate={this.handleCreate}
+                        /> */}
+                    <CreateTable columns={columns} dataSource={this.data} />
                 </div>
             </div>
         )

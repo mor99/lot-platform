@@ -1,166 +1,14 @@
 import { Component } from 'react';
-import { Select, Table, Button, Form, Input, Radio, Modal, Menu, Dropdown, Cascader } from 'antd'
+import {  Button, Form, Input, Radio, Modal,Cascader } from 'antd'
+import  CreateTable from '../../../libs/components/create_table/index.js'
 
-const { TextArea, Search } = Input
+import {CollectionCreateForm} from './addstrategy.js'
+import {CollectionCreateForm1} from './addcontent.js'
+
+const {  Search } = Input
 
 //import { DownOutlined } from '@ant-design/icons';
 
-const { SubMenu } = Menu;
-
-const options = [
-    {
-        value: 'RS485',
-        label: 'RS485',
-        children: [
-            {
-                value: 'Modbus-RTU',
-                label: 'RTU',
-            },
-            {
-                value: 'Privitr RS485',
-                label: 'pri'
-            }
-        ],
-    },
-    {
-        value: 'LoRa',
-        label: 'lora',
-
-        children: [
-            {
-                value: 'LoraWan',
-                label: 'wan',
-            },
-            {
-                value: 'privitalora',
-                label: 'priwan'
-            }
-        ],
-    },
-];
-//策略配置
-const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
-    // eslint-disable-next-line
-    class extends React.Component {
-        render() {
-            const { visible, onCancel, onCreate, form } = this.props;
-            const { getFieldDecorator } = form;
-            return (
-                <Modal
-                    visible={visible}
-                    title="添加控制策略"
-                    cancelText='取消'
-                    okText="添加"
-                    onCancel={onCancel}
-                    onOk={onCreate}
-                >
-                    <Form layout="vertical">
-                        <Form.Item label="配置名称">
-                            {getFieldDecorator('titie', {
-                                rules: [{ required: true, message: '请输入名称' }],
-                            })(<Input placeholder="给策略的配置起个名字吧" />)}
-                        </Form.Item>
-                        <Form.Item label="配置描述">
-                            {getFieldDecorator('description', {
-                                rules: [{ required: true, message: '采集策略内容的描述' }],
-                            })(<TextArea rows={2} />)}
-                        </Form.Item>
-                        <Form.Item label="数据流向">
-                            {getFieldDecorator('titie', {
-                                rules: [{ required: true, message: '请输入数据流向' }],
-                            })(<Input/>)}
-                        </Form.Item>
-                        <Form.Item label="上传协议">
-                            {getFieldDecorator('titie', {
-                                rules: [{ required: true, message: '请上传协议' }],
-                            })(<Input/>)}
-                        </Form.Item>
-                    </Form>
-                </Modal>
-            );
-        }
-    },
-);
-//策略内容
-const CollectionCreateForm1 = Form.create({ name: 'form_in_modal' })(
-    // eslint-disable-next-line
-    class extends React.Component {
-        render() {
-            const { visible, onCancel, onCreate, form } = this.props;
-            const { getFieldDecorator } = form;
-            const columns = [
-                {
-                    title: '属性名称',
-                    dataIndex: 'name',
-                },
-                {
-                    title: '属性别名',
-                    dataIndex: 'alias',
-
-                },
-                {
-                    title: '类型',
-                    dataIndex: 'type',
-                },
-                {
-                    title: '单位',
-                    dataIndex: 'unit',
-                },
-                {
-                    title: '是否上传',
-                    dataIndex: 'isUpdate',
-                },
-                {
-                    title: '上传间隔(秒)',
-                    dataIndex: 'interval',
-                }]
-            return (
-                <Modal
-                    visible={visible}
-                    title="添加控制策略"
-                    cancelText='取消'
-                    okText="添加"
-                    onCancel={onCancel}
-                    onOk={onCreate}
-                    width='100%'
-                    style={{ top: '0px' }}
-                >
-                    <div style={{ height: '100vh' }}>
-                        <div style={{ float: 'left', width: '30%' }}>
-                            <Form layout="vertical">
-                                <Form.Item label="配置名称:">
-                                    {getFieldDecorator('titie', {
-                                        rules: [{ required: true, message: '请输入名称' }],
-                                    })(<Input placeholder="请输入名称" />)}
-                                </Form.Item>
-                                <Form.Item label="配置描述:">
-                                    {getFieldDecorator('description', {
-                                        rules: [{ required: false, message: '采集策略内容的描述' }],
-                                    })(<TextArea placeholder="采集策略内容的描述" rows={2} />)}
-                                </Form.Item>
-                                <Form.Item label="选择模型:">
-                                    {getFieldDecorator('description', {
-                                        rules: [{ required: true, message: '请选择模型' }],
-                                    })(<Select />)}
-                                </Form.Item>
-                                <Form.Item label='绑定结果:'>
-                                    <div style={{ border: '1px dashed #eeeeee', borderRadius: '20px', height: '80px', width: '350px', backgroundColor: '#F5F5F5', textAlign: 'center' }}><br />选择策略以预览</div>
-                                </Form.Item>
-                            </Form>
-                        </div>
-                        <div style={{ float: 'right', width: '65%', top: '100px' }}>
-                            <Table style={{ weigth: "100%" }} columns={columns} dataSource={null} locale={{
-                                filterConfirm: '确定',
-                                filterReset: '重置',
-                                emptyText: '暂无数据'
-                            }} />
-                        </div>
-                    </div>
-                </Modal>
-            );
-        }
-    },
-);
 export default class StrategyData extends Component {
     constructor(props) {
         super(props);
@@ -313,12 +161,7 @@ export default class StrategyData extends Component {
                             onCancel={this.handleCancel}
                             onCreate={this.handleCreate}
                         />
-                        <Table columns={columns} dataSource={null}
-                            locale={{
-                                filterConfirm: '确定',
-                                filterReset: '重置',
-                                emptyText: '暂无数据'
-                            }} />
+                        <CreateTable columns={columns} dataSource={null} />
                     </Form.Item>
                 </Form>
             </div>

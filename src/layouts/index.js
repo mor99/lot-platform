@@ -3,6 +3,8 @@ import { Layout, Menu, Icon, Breadcrumb, Tabs, Dropdown } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
 //import Bread from './Breadcrumbs.js'
+import styles from './index.less'
+
 
 const { Header, Content, Footer, Sider } = Layout;
 //const { SubMenu } = Menu;
@@ -52,15 +54,10 @@ class BasicLayout extends Component {
     render() {
         console.log(this.props.children)
         return (
-            <Layout style={{ minHeight: '100vh' }}>
+            <Layout className={styles.layout}>
                 <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-                    <div className="logo"
-                        style={{
-                            height: '64px',
-                            background: 'rgba(193, 210, 240,0.1)',
-                            margin: '0px',
-                        }}>
-                        <h1 style={{ color: '#e8ecf0', 'paddingTop': '20px', 'paddingBottom': '14px', 'textAlign': 'center' }}>物联网平台</h1>
+                    <div className={styles.logo}>
+                        <p className={styles.title}>物联网平台</p>
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
@@ -104,7 +101,7 @@ class BasicLayout extends Component {
                     </Menu>
                 </Sider>
                 <Layout>
-                    <Header style={{ background: '#fff', textAlign: 'right', padding: 20 }}>
+                    <Header className={styles.header}>
                         <Tabs>
                             <TabPane
                                 tab={
@@ -147,7 +144,7 @@ class BasicLayout extends Component {
                             <Breadcrumb.Item><Link to=""><Icon type="home" />首页</Link></Breadcrumb.Item>
                             <Breadcrumb.Item><Link to={this.props.location.pathname}>{routes[this.props.location.pathname]}</Link></Breadcrumb.Item>
                         </Breadcrumb>
-                        <div style={{ padding: 24, width: '100%', height: '100%' }}>{this.props.children}</div>
+                        <div className={styles.children}>{this.props.children}</div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>©2020 宁夏计算机软件与技术服务有限公司</Footer>
                 </Layout>
