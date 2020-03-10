@@ -1,13 +1,11 @@
 
 import { Component } from 'react';
 import { Button,  Input } from 'antd'
-
-//import { Collection } from '../../../libs/components/create_form/collection.js'
 import CreateTable from '../../../libs/components/create_table/index.js'
 import styles from './index.less'
 import {CollectionAddDevice} from './adddevice.js'
 
-const { TextArea, Search } = Input
+const {Search } = Input
 
 export default class Overall extends Component {
     constructor(props) {
@@ -15,7 +13,6 @@ export default class Overall extends Component {
         this.state = {
             data: []
         };
-
     }
     state = {
         visible: false
@@ -46,6 +43,7 @@ export default class Overall extends Component {
     saveFormRef = formRef => {
         this.formRef = formRef;
     };
+
     render() {
         const columns = [
             {
@@ -91,25 +89,25 @@ export default class Overall extends Component {
 
         return (
             <div className={styles.devicelist}>
-                <Button type="primary" onClick={this.showModal}>
+                <Button
+                className={styles.button}
+                type="primary" 
+                onClick={this.showModal}>
                     添加设备
                 </Button>
-                <Search placeholder="按设备名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
-                <div style={{ padding: '24px 0px 0px 0px' }}>
-                 <CollectionAddDevice
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                /> 
-{/*                     <Collection 
-                        visible={this.state.visible} 
-                        content={content}
-                        wrappedComponentRef={this.saveFormRef}
-                        onCancel={this.handleCancel}
-                        onCreate={this.handleCreate}
-                        /> */}
-                    <CreateTable columns={columns} dataSource={this.data} />
+                <Search 
+                        className={styles.search}
+                        placeholder="按设备名搜索" 
+                        onSearch={value => console.log(value)} 
+                        enterButton />
+                <div className={styles.devicetable}>
+                        <CollectionAddDevice
+                            wrappedComponentRef={this.saveFormRef}
+                            visible={this.state.visible}
+                            onCancel={this.handleCancel}
+                            onCreate={this.handleCreate}
+                        /> 
+                        <CreateTable columns={columns} dataSource={this.data} />
                 </div>
             </div>
         )

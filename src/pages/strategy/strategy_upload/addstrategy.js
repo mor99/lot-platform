@@ -1,10 +1,8 @@
 import {Form, Input, Modal,Cascader } from 'antd'
 
-
 const { TextArea } = Input
 
 //import { DownOutlined } from '@ant-design/icons';
-
 const options = [
     {
         value: 'RS485',

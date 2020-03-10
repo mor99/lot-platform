@@ -1,8 +1,9 @@
 import { Component } from 'react';
 import { Button, Input } from 'antd'
 import  CreateTable from '../../../libs/components/create_table/index.js'
-
 import {CollectionCreateForm} from './addstrategy.js'
+import styles from './index.less'
+
 const { Search } = Input
 
 export default class StrategyControl extends Component {
@@ -69,20 +70,20 @@ export default class StrategyControl extends Component {
         ];
 
         return (
-            <div style={{ padding: 24, background: '#fff', width: '100%', height: '100%' }}>
-                <Button type="primary" onClick={this.showModal}>
-                    新建策略
-                </Button>
-                <div style={{ padding: '24px 0px 0px 0px' }}>
-                <Search placeholder="按策略参数名搜索" onSearch={value => console.log(value)} style={{ width: 200 ,float:'right'}} enterButton />
+            <div className={styles.control}>
+                <div>
+                    <Button className={styles.button} type="primary" onClick={this.showModal}>
+                        新建策略
+                    </Button>
+                    <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)}enterButton />
+                </div>
                     <CollectionCreateForm
                         wrappedComponentRef={this.saveFormRef}
                         visible={this.state.visible}
                         onCancel={this.handleCancel}
                         onCreate={this.handleCreate}
                     />
-                <CreateTable columns={columns} dataSource={null} />
-                </div>
+                    <CreateTable columns={columns} dataSource={null} />
             </div>
         )
     }

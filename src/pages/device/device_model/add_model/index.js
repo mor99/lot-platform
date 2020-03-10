@@ -4,6 +4,7 @@ import Link from 'umi/link'
 
 import CreateTable from '../../../../libs/components/create_table/index.js'
 import {CollectionCreateForm} from '../add-attribute.js'
+import styles from './index.less'
 
 const{TextArea}= Input
 
@@ -98,7 +99,7 @@ export class AddModel extends Component {
                         <p />
                     </Form.Item>
                     <Form.Item label='属性列表:'>
-                    <CreateTable columns={columns} dataSource={this.data} />
+                        <CreateTable columns={columns} dataSource={this.data} />
                         <Button  onClick={this.showModal}>添加属性</Button>
                         <CollectionCreateForm
                             wrappedComponentRef={this.saveFormRef}
@@ -108,8 +109,8 @@ export class AddModel extends Component {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <Button onClick={this.onclick}style={{ float: 'right' }}>取消</Button>
-                        <Button type="primary" style={{ float: 'right' }}>创建</Button>
+                        <Button className={styles.button} onClick={this.onclick}>取消</Button>
+                        <Button className={styles.button} type="primary">创建</Button>
 
                     </Form.Item>
                 </Form>

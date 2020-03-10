@@ -1,10 +1,7 @@
 import { Component } from 'react';
 import { Button, Icon } from 'antd'
-
 import {AddModel} from './add_model/index.js'
 import styles from './index.less'
-
-
 
 export default class DeviceModel extends Component {
     constructor(props) {

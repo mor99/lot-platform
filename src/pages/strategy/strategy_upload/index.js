@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import {  Button, Form, Input, Radio, Modal,Cascader } from 'antd'
+import {  Button, Form, Input, Radio} from 'antd'
 import  CreateTable from '../../../libs/components/create_table/index.js'
 
 import {CollectionCreateForm} from './addstrategy.js'
 import {CollectionCreateForm1} from './addcontent.js'
+import styles from './index.less'
 
 const {  Search } = Input
 
@@ -136,19 +137,19 @@ export default class StrategyData extends Component {
                 : '添加内容';
         return (
 
-            <div style={{ padding: 24, background: '#fff', width: '100%', height: '100%' }}>
+            <div className={styles.strategyupload}>
                 <Form layout={formLayout}>
-                    <Form.Item>
+                <Form.Item className={styles.formitem}>
                         <Radio.Group defaultValue="deploy" onChange={this.handleFormLayoutChange}>
                             <Radio.Button value="deploy">策略配置</Radio.Button>
                             <Radio.Button value="content">策略内容</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" onClick={this.showModal}>
+                    <Form.Item>                        
+                        <Button className={styles.button} type="primary" onClick={this.showModal}>
                             {this.state.newone}
                         </Button>
-                        <Search placeholder="按策略参数名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
+                        <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
                         <CollectionCreateForm
                             wrappedComponentRef={this.saveFormRef}
                             visible={this.state.visible}

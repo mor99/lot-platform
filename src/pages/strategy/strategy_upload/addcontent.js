@@ -2,7 +2,6 @@ import {  Form, Input,Modal,Select} from 'antd'
 import  CreateTable from '../../../libs/components/create_table/index.js'
 
 const { TextArea } = Input
-
 //策略内容
 export const CollectionCreateForm1 = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line

@@ -139,8 +139,8 @@ class BasicLayout extends Component {
                             />
                         </Tabs>
                     </Header>
-                    <Content style={{ margin: '0 16px' }}>
-                        <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Content className={styles.content}>
+                        <Breadcrumb className={styles.breadcrumb}>
                             <Breadcrumb.Item><Link to=""><Icon type="home" />首页</Link></Breadcrumb.Item>
                             <Breadcrumb.Item><Link to={this.props.location.pathname}>{routes[this.props.location.pathname]}</Link></Breadcrumb.Item>
                         </Breadcrumb>

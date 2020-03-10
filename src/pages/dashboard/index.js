@@ -13,7 +13,7 @@ export default class Dashboard extends Component {
                 <div>
                     <img src='progressing.png' alt='测试' className={styles.img}/>
                 </div>
-                <div className={styles.divbutton}>
+                <div className={styles.button}>
                     <Link to ='/overall'><button>回到主页</button></Link>
                 </div>
             </div>

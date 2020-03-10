@@ -32,11 +32,15 @@ export default class Overall extends Component {
 
         return (
             <div className={styles.binding}>
+                <div className={styles.button}>
                 <Button type="primary">
                     添加绑定
                 </Button>
-                <CreateTable columns={columns} dataSource={null} />
                 </div>
+                <div className={styles.createtable}>
+                    <CreateTable columns={columns} dataSource={null} />
+                </div>
+            </div>
         )
     }
 }
