@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Button, Form, Input, Radio } from 'antd'
 import { CollectionCreateForm } from './addstrategy.jsx'
 import { CollectionCreateForm1 } from './addcontent.jsx'
-import { CreateTable } from '../../../libs/components/create_table/index.jsx'
+import CreateTable from '../../../libs/components/create_table/index.jsx'
 import styles from './index.less'
 
 const { Search } = Input
