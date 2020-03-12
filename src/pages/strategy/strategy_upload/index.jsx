@@ -1,34 +1,36 @@
 import { Component } from 'react';
-import { Button, Form, Input,Radio} from 'antd'
-import  CreateTable from '../../../libs/components/create_table/index.js'
-import {CollectionCreateForm} from './addstrategy.js'
-import {CollectionCreateForm1} from './addcontent.js'
+import { Button, Form, Input, Radio } from 'antd'
+import CreateTable from '../../../libs/components/create_table/index.jsx'
+
+import { CollectionCreateForm } from './addstrategy.jsx'
+import { CollectionCreateForm1 } from './addcontent.jsx'
 import styles from './index.less'
 
-const { Search} = Input
+const { Search } = Input
 
 //import { DownOutlined } from '@ant-design/icons';
-export default class StrategyData extends Component{
+
+export default class StrategyData extends Component {
     constructor(props) {
         super(props);
-        this.state = {formLayout: 'deploy'}
+        this.state = { formLayout: 'deploy' }
+        this.newone = ''
     }
     state = {
         visible: false,
-        visible1:false,
-        newone:''
+        visible1: false,
     };
     showModal = () => {
-        if (this.state.newone==='新建策略'){
+        if (this.state.newone === '新建策略') {
             this.setState({ visible: true });
         }
-        else{
+        else {
             this.setState({ visible1: true });
         }
     };
 
     handleCancel = () => {
-        this.setState({ visible: false,visible1:false });
+        this.setState({ visible: false, visible1: false });
     };
 
     handleCreate = () => {
@@ -49,8 +51,8 @@ export default class StrategyData extends Component{
     };
     handleFormLayoutChange = e => {
         this.setState({ formLayout: e.target.value });
-      }
-      render() {
+    }
+    render() {
         const deploycolumns = [
             {
                 title: '配置编号',
@@ -65,15 +67,15 @@ export default class StrategyData extends Component{
             },
             {
                 title: '配置描述',
-                dataIndex: 'describe',
+                dataIndex: 'description',
             },
             {
-                title: '外设类型',
-                dataIndex: 'type',
+                title: '数据流向',
+                dataIndex: 'dateFlow',
             },
             {
-                title: '使用协议',
-                dataIndex: 'deal',
+                title: '上传协议',
+                dataIndex: 'uploadingDeal',
                 defaultSortOrder: 'descend',
             },
             {
@@ -126,41 +128,44 @@ export default class StrategyData extends Component{
 
         const { formLayout } = this.state;
         const columns =
-          formLayout === 'deploy'
-            ? deploycolumns
-            : contentcolumns;
-        this.state.newone = 
             formLayout === 'deploy'
-            ? '新建策略'
-            : '添加内容';
+                ? deploycolumns
+                : contentcolumns;
+        this.newone =
+            formLayout === 'deploy'
+                ? '新建策略'
+                : '添加内容';
         return (
-            <div className={styles.strategydata}>
+
+            <div className={styles.strategyupload}>
                 <Form layout={formLayout}>
-                <Form.Item className={styles.formitem}>
-                    <Radio.Group defaultValue="deploy" onChange={this.handleFormLayoutChange}>
-                        <Radio.Button value="deploy">策略配置</Radio.Button>
-                        <Radio.Button value="content">策略内容</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
-                <Form.Item >
-                    <Button className={styles.button} type="primary" onClick={this.showModal}>{this.state.newone}</Button>
-                    <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)}  enterButton />
-                    <CollectionCreateForm
-                        wrappedComponentRef={this.saveFormRef}
-                        visible={this.state.visible}
-                        onCancel={this.handleCancel}
-                        onCreate={this.handleCreate}
-                    />
-                    <CollectionCreateForm1
-                        wrappedComponentRef={this.saveFormRef}
-                        visible={this.state.visible1}
-                        onCancel={this.handleCancel}
-                        onCreate={this.handleCreate}
-                    />
-                    <CreateTable columns={columns} dataSource={null} />
-                </Form.Item>
+                    <Form.Item className={styles.formitem}>
+                        <Radio.Group defaultValue="deploy" onChange={this.handleFormLayoutChange}>
+                            <Radio.Button value="deploy">策略配置</Radio.Button>
+                            <Radio.Button value="content">策略内容</Radio.Button>
+                        </Radio.Group>
+                    </Form.Item>
+                    <Form.Item>
+                        <Button className={styles.button} type="primary" onClick={this.showModal}>
+                            {this.newone}
+                        </Button>
+                        <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
+                        <CollectionCreateForm
+                            wrappedComponentRef={this.saveFormRef}
+                            visible={this.state.visible}
+                            onCancel={this.handleCancel}
+                            onCreate={this.handleCreate}
+                        />
+                        <CollectionCreateForm1
+                            wrappedComponentRef={this.saveFormRef}
+                            visible={this.state.visible1}
+                            onCancel={this.handleCancel}
+                            onCreate={this.handleCreate}
+                        />
+                        <CreateTable columns={columns} dataSource={null} />
+                    </Form.Item>
                 </Form>
-             </div>
+            </div>
         );
-      }
     }
+}

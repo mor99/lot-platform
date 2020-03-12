@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Button, Icon } from 'antd'
-import {AddModel} from './add_model/index.js'
+import { AddModel } from './add_model/index.jsx'
 import styles from './index.less'
 
 export default class DeviceModel extends Component {
@@ -44,7 +44,7 @@ export default class DeviceModel extends Component {
                 {!this.state.visible ? (<Button className={styles.button}
                     type='dashed'
                     onClick={this.showModal}
->
+                >
                     <Icon type='plus' /><br />点击新建模型
                 </Button>) : (<AddModel />)}
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Breadcrumb, Icon} from 'antd';
+import { Breadcrumb, Icon } from 'antd';
 
 const breadcrumbNameMap = [
   { path: '/', breadcrumb: '首页' },
@@ -15,7 +15,7 @@ export const Bread = withRouter((props) => {
   const url = location.pathname
 
   let isIndex = false;
-  if ( url === '/') {
+  if (url === '/') {
     isIndex = true;
   }
 
@@ -23,22 +23,21 @@ export const Bread = withRouter((props) => {
 
   const breadcrumbItems = [(
     <Breadcrumb.Item key="home">
-            <Link to=""><Icon type="home" /></Link>
-        </Breadcrumb.Item>
-    ),(<Breadcrumb.Item key={url}>
+      <Link to=""><Icon type="home" /></Link>
+    </Breadcrumb.Item>
+  ), (<Breadcrumb.Item key={url}>
     <Link to={url}>
       {nameItem}
     </Link>
   </Breadcrumb.Item>)]
 
   return (
-        isIndex ? null :
-            <div className="breadcrumb-content">
-                <Breadcrumb>
-                    {breadcrumbItems}
-                </Breadcrumb>
-            </div>
+    isIndex ? null :
+      <div className="breadcrumb-content">
+        <Breadcrumb>
+          {breadcrumbItems}
+        </Breadcrumb>
+      </div>
   );
 });
 
-    

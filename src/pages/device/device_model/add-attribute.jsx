@@ -1,6 +1,6 @@
-import { Form, Modal, Input ,Select} from 'antd'
+import { Form, Modal, Input, Select } from 'antd'
 
-const {Option} = Select
+const { Option } = Select
 
 export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line

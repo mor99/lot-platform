@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Layout, Menu, Icon, Breadcrumb, Tabs, Dropdown } from 'antd';
 import Link from 'umi/link';
 import withRouter from 'umi/withRouter'
-//import Bread from './Breadcrumbs.js'
+//import Bread from './Breadcrumbs.jsx'
 import styles from './index.less'
 
 

@@ -1,8 +1,6 @@
-import {Form, Input, Modal,Cascader } from 'antd'
+import { Form, Input, Modal, Cascader } from 'antd'
 
 const { TextArea } = Input
-
-//import { DownOutlined } from '@ant-design/icons';
 const options = [
     {
         value: 'RS485',
@@ -34,7 +32,8 @@ const options = [
         ],
     },
 ];
-//策略配置
+
+//配置策略弹窗
 export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line
     class extends React.Component {
@@ -44,7 +43,7 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             return (
                 <Modal
                     visible={visible}
-                    title="添加控制策略"
+                    title="添加采集策略"
                     cancelText='取消'
                     okText="添加"
                     onCancel={onCancel}
@@ -61,13 +60,8 @@ export const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                                 rules: [{ required: true, message: '采集策略内容的描述' }],
                             })(<TextArea rows={2} />)}
                         </Form.Item>
-                        <Form.Item label="数据流向">
-                            {getFieldDecorator('titie', {
-                                rules: [{ required: true, message: '请输入数据流向' }],
-                            })(<Input/>)}
-                        </Form.Item>
-                        <Form.Item label="上传协议">
-                            <Cascader options={options}  placeholder="请选择协议" />
+                        <Form.Item>
+                            <Cascader options={options} placeholder="请选择通信协议" />
                         </Form.Item>
                     </Form>
                 </Modal>

@@ -1,4 +1,4 @@
-import {Component } from 'react';
+import { Component } from 'react';
 import Link from 'umi/link';
 import styles from './index.less'
 
@@ -9,15 +9,15 @@ export default class Dashboard extends Component {
     }
     render() {
         return (
-            <div  className={styles.big}>
+            <div className={styles.big}>
                 <div>
-                    <img src='progressing.png' alt='测试' className={styles.img}/>
+                    <img src='progressing.png' alt='测试' className={styles.img} />
                 </div>
                 <div className={styles.button}>
-                    <Link to ='/overall'><button>回到主页</button></Link>
+                    <Link to='/overall'><button>回到主页</button></Link>
                 </div>
             </div>
-            
+
         )
     }
 }

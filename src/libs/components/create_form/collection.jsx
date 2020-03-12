@@ -1,7 +1,7 @@
-import { Button,Form, Modal,Input} from 'antd'
-import { Component} from 'react';
+import { Button, Form, Modal, Input } from 'antd'
+import { Component } from 'react';
 
-const { TextArea} = Input
+const { TextArea } = Input
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line
@@ -11,12 +11,12 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
             const { getFieldDecorator } = form;
             const content = this.props
             return (
-                {content}
+                { content }
             );
         }
     },
 );
-export class Collection extends Component{
+export class Collection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,19 +41,19 @@ export class Collection extends Component{
             this.setState({ visible: false });
         });
     };
-    
+
     saveFormRef = formRef => {
         this.formRef = formRef;
     };
 
-    return(){
-        return(
+    return() {
+        return (
             <CollectionCreateForm
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                /> 
+                wrappedComponentRef={this.saveFormRef}
+                visible={this.state.visible}
+                onCancel={this.handleCancel}
+                onCreate={this.handleCreate}
+            />
         )
     }
 

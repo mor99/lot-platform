@@ -1,15 +1,13 @@
 import { Component } from 'react';
-import {  Button, Form, Input, Radio} from 'antd'
-import  CreateTable from '../../../libs/components/create_table/index.js'
-
-import {CollectionCreateForm} from './addstrategy.js'
-import {CollectionCreateForm1} from './addcontent.js'
+import { Button, Form, Input, Radio } from 'antd'
+import { CollectionCreateForm } from './addstrategy.jsx'
+import { CollectionCreateForm1 } from './addcontent.jsx'
+import { CreateTable } from '../../../libs/components/create_table/index.jsx'
 import styles from './index.less'
 
-const {  Search } = Input
+const { Search } = Input
 
 //import { DownOutlined } from '@ant-design/icons';
-
 export default class StrategyData extends Component {
     constructor(props) {
         super(props);
@@ -67,15 +65,15 @@ export default class StrategyData extends Component {
             },
             {
                 title: '配置描述',
-                dataIndex: 'description',
+                dataIndex: 'describe',
             },
             {
-                title: '数据流向',
-                dataIndex: 'dateFlow',
+                title: '外设类型',
+                dataIndex: 'type',
             },
             {
-                title: '上传协议',
-                dataIndex: 'uploadingDeal',
+                title: '使用协议',
+                dataIndex: 'deal',
                 defaultSortOrder: 'descend',
             },
             {
@@ -136,20 +134,17 @@ export default class StrategyData extends Component {
                 ? '新建策略'
                 : '添加内容';
         return (
-
-            <div className={styles.strategyupload}>
+            <div className={styles.strategydata}>
                 <Form layout={formLayout}>
-                <Form.Item className={styles.formitem}>
+                    <Form.Item className={styles.formitem}>
                         <Radio.Group defaultValue="deploy" onChange={this.handleFormLayoutChange}>
                             <Radio.Button value="deploy">策略配置</Radio.Button>
                             <Radio.Button value="content">策略内容</Radio.Button>
                         </Radio.Group>
                     </Form.Item>
-                    <Form.Item>                        
-                        <Button className={styles.button} type="primary" onClick={this.showModal}>
-                            {this.state.newone}
-                        </Button>
-                        <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)} style={{ width: 200, float: 'right' }} enterButton />
+                    <Form.Item >
+                        <Button className={styles.button} type="primary" onClick={this.showModal}>{this.state.newone}</Button>
+                        <Search className={styles.search} placeholder="按策略参数名搜索" onSearch={value => console.log(value)} enterButton />
                         <CollectionCreateForm
                             wrappedComponentRef={this.saveFormRef}
                             visible={this.state.visible}

@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import {  Button } from 'antd'
-import  CreateTable from '../../../libs/components/create_table/index.js'
+import { Button } from 'antd'
+import CreateTable from '../../../libs/components/create_table/index.jsx'
 import styles from './index.less'
 
 export default class Overall extends Component {
@@ -33,8 +33,8 @@ export default class Overall extends Component {
         return (
             <div className={styles.binding}>
                 <div className={styles.button}>
-                <Button type="primary">
-                    添加绑定
+                    <Button type="primary">
+                        添加绑定
                 </Button>
                 </div>
                 <div className={styles.createtable}>

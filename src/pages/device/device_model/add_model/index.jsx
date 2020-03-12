@@ -1,21 +1,21 @@
 import { Component } from 'react';
-import { Button, Form,  Input } from 'antd'
+import { Button, Form, Input } from 'antd'
 import Link from 'umi/link'
 
-import CreateTable from '../../../../libs/components/create_table/index.js'
-import {CollectionCreateForm} from '../add-attribute.js'
+import CreateTable from '../../../../libs/components/create_table/index.jsx'
+import { CollectionCreateForm } from '../add-attribute.jsx'
 import styles from './index.less'
 
-const{TextArea}= Input
+const { TextArea } = Input
 
 const layout = {
     labelCol: {
-      span: 2,
+        span: 2,
     },
     wrapperCol: {
-      span: 16,
+        span: 16,
     },
-  };
+};
 export class AddModel extends Component {
     constructor(props) {
         super()
@@ -49,7 +49,7 @@ export class AddModel extends Component {
     saveFormRef = formRef => {
         this.formRef = formRef;
     };
-    onclick = ()=>{
+    onclick = () => {
         window.location.reload(true)
     }
     render() {
@@ -80,16 +80,16 @@ export class AddModel extends Component {
         ];
         return (
             <div>
-               <Link to='/device/model'><Button onClick={this.onclick}>返回模型列表</Button></Link>
+                <Link to='/device/model'><Button onClick={this.onclick}>返回模型列表</Button></Link>
                 <br />
                 <br />
                 <Form {...layout}
-                layout="vertical"
+                    layout="vertical"
                     title="添加设备"
                     cancelText='取消'
                     okText="添加">
                     <Form.Item label='模型名称:'
-                            required='true'>
+                        required='true'>
                         < Input placeholder="请输入设备名称" />
                     </Form.Item >
                     <Form.Item label='模型描述:'>
@@ -100,7 +100,7 @@ export class AddModel extends Component {
                     </Form.Item>
                     <Form.Item label='属性列表:'>
                         <CreateTable columns={columns} dataSource={this.data} />
-                        <Button  onClick={this.showModal}>添加属性</Button>
+                        <Button onClick={this.showModal}>添加属性</Button>
                         <CollectionCreateForm
                             wrappedComponentRef={this.saveFormRef}
                             visible={this.state.visible}

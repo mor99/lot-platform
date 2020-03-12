@@ -1,11 +1,11 @@
 
 import { Component } from 'react';
-import { Button,  Input } from 'antd'
-import CreateTable from '../../../libs/components/create_table/index.js'
+import { Button, Input } from 'antd'
+import CreateTable from '../../../libs/components/create_table/index.jsx'
 import styles from './index.less'
-import {CollectionAddDevice} from './adddevice.js'
+import { CollectionAddDevice } from './adddevice.jsx'
 
-const {Search } = Input
+const { Search } = Input
 
 export default class Overall extends Component {
     constructor(props) {
@@ -90,24 +90,24 @@ export default class Overall extends Component {
         return (
             <div className={styles.devicelist}>
                 <Button
-                className={styles.button}
-                type="primary" 
-                onClick={this.showModal}>
+                    className={styles.button}
+                    type="primary"
+                    onClick={this.showModal}>
                     添加设备
                 </Button>
-                <Search 
-                        className={styles.search}
-                        placeholder="按设备名搜索" 
-                        onSearch={value => console.log(value)} 
-                        enterButton />
+                <Search
+                    className={styles.search}
+                    placeholder="按设备名搜索"
+                    onSearch={value => console.log(value)}
+                    enterButton />
                 <div className={styles.devicetable}>
-                        <CollectionAddDevice
-                            wrappedComponentRef={this.saveFormRef}
-                            visible={this.state.visible}
-                            onCancel={this.handleCancel}
-                            onCreate={this.handleCreate}
-                        /> 
-                        <CreateTable columns={columns} dataSource={this.data} />
+                    <CollectionAddDevice
+                        wrappedComponentRef={this.saveFormRef}
+                        visible={this.state.visible}
+                        onCancel={this.handleCancel}
+                        onCreate={this.handleCreate}
+                    />
+                    <CreateTable columns={columns} dataSource={this.data} />
                 </div>
             </div>
         )

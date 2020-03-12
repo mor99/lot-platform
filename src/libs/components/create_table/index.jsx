@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import { Table } from 'antd'
 
-export default class CreateTable extends Component{
+export default class CreateTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:[]
+            data: []
         };
 
     }
@@ -14,7 +14,7 @@ export default class CreateTable extends Component{
     };
 
     showModal = () => {
-        
+
         this.setState({ visible: true });
     };
 
@@ -45,13 +45,15 @@ export default class CreateTable extends Component{
         }
 
         return (
-            <div style={{padding:24,background: '#fff', width:'100%',height:'100%' }}>
-                <Table columns={this.props.columns} dataSource={this.props.data} onChange={onChange} 
-                locale={{filterConfirm: '确定',
+            <div style={{ padding: 24, background: '#fff', width: '100%', height: '100%' }}>
+                <Table columns={this.props.columns} dataSource={this.props.data} onChange={onChange}
+                    locale={{
+                        filterConfirm: '确定',
                         filterReset: '重置',
-                        emptyText: '暂无数据'}} />
+                        emptyText: '暂无数据'
+                    }} />
             </div>
-           
+
         )
     }
 }

@@ -1,5 +1,5 @@
-import {  Form, Input,Modal,Select} from 'antd'
-import  CreateTable from '../../../libs/components/create_table/index.js'
+import { Form, Input, Modal, Select } from 'antd'
+import CreateTable from '../../../libs/components/create_table/index.jsx'
 
 const { TextArea } = Input
 //策略内容
@@ -28,12 +28,8 @@ export const CollectionCreateForm1 = Form.create({ name: 'form_in_modal' })(
                     dataIndex: 'unit',
                 },
                 {
-                    title: '是否上传',
-                    dataIndex: 'isUpdate',
-                },
-                {
-                    title: '上传间隔(秒)',
-                    dataIndex: 'interval',
+                    title: '是否控制',
+                    dataIndex: 'isControl',
                 }]
             return (
                 <Modal
@@ -49,12 +45,12 @@ export const CollectionCreateForm1 = Form.create({ name: 'form_in_modal' })(
                     <div style={{ height: '100vh' }}>
                         <div style={{ float: 'left', width: '30%' }}>
                             <Form layout="vertical">
-                                <Form.Item label="配置名称:">
+                                <Form.Item label="策略名称:">
                                     {getFieldDecorator('titie', {
                                         rules: [{ required: true, message: '请输入名称' }],
                                     })(<Input placeholder="请输入名称" />)}
                                 </Form.Item>
-                                <Form.Item label="配置描述:">
+                                <Form.Item label="策略描述:">
                                     {getFieldDecorator('description', {
                                         rules: [{ required: false, message: '采集策略内容的描述' }],
                                     })(<TextArea placeholder="采集策略内容的描述" rows={2} />)}
@@ -70,7 +66,7 @@ export const CollectionCreateForm1 = Form.create({ name: 'form_in_modal' })(
                             </Form>
                         </div>
                         <div style={{ float: 'right', width: '65%', top: '100px' }}>
-                        <CreateTable style={{weight:'50%'}} columns={columns} dataSource={null} />
+                            <CreateTable style={{ width: '100%' }} columns={columns} dataSource={null} />
                         </div>
                     </div>
                 </Modal>
